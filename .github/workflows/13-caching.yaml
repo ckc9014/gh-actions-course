@@ -47,7 +47,8 @@ jobs:
           path: 13-caching/react-app/node_modules
           key: ${{ steps.cache-key.outputs.CACHE_KEY }} #restore the cache for diff job
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'   
+        #condition setup for if cache key hit miss , and regeneate the dependencies
         run: npm ci
   lint-test:
     runs-on: ubuntu-latest
